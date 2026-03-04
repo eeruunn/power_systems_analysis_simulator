@@ -9,18 +9,63 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="main">
-      <div id="bucket" class="bucket"></div>
-      <div class="tools">
-        <h3>Components</h3>
-        <div class="cmpsec">
-          <button class="cmpbtn" id="busBtn" onclick="addBusf()">BUS</button>
-          <button class="cmpbtn" id="lineBtn" onclick="lineMode()">Line</button>
+  <div class="ribbon">
+    <div class="ribbon-tabs">
+      <div class="tab active">SIMULATION</div>
+      <div class="tab">DESIGN</div>
+    </div>
+    <div class="toolstrip">
+      <div class="tool-section">
+        <div class="tool-group">
+          <button class="ribbon-btn" onclick="addBusf()"><span>Add Bus</span></button>
+          <button class="ribbon-btn" onclick="lineMode()"><span>Add Line</span></button>
         </div>
+        <div class="section-label">Construction</div>
+      </div>
+      <div class="tool-section">
+        <div class="tool-group">
+          <button class="ribbon-btn run-btn" onclick="generateYBus()"><span>Run Solver</span></button>
+          <button class="ribbon-btn" onclick="location.reload()"><span>Clear</span></button>
+        </div>
+        <div class="section-label">Analysis</div>
       </div>
     </div>
+  </div>
 
-    <button id="addbusbtn" onclick="addBus()">Add Bus</button>
-  </body>
+  <div class="main">
+    <div id="bucket" class="bucket"></div>
+
+    <div class="tools">
+      <div class="sidebar-header">PROPERTY INSPECTOR</div>
+
+      <div id="no-selection-msg" style="padding: 20px; color: #888; font-size: 11px; text-align: center;">
+        Select a component to view properties.
+      </div>
+
+      <div id="props-panel" class="property-group" style="display: none;">
+        <div class="section-title">Transmission Line Data</div>
+        <div class="prop-row">
+          <span class="prop-label">Path</span>
+          <span class="prop-value" id="editing-label">-</span>
+        </div>
+        <div class="prop-row">
+          <span class="prop-label">Resistance (R)</span>
+          <input type="number" class="prop-input" id="inputR" step="0.001">
+        </div>
+        <div class="prop-row">
+          <span class="prop-label">Reactance (X)</span>
+          <input type="number" class="prop-input" id="inputX" step="0.001">
+        </div>
+        <button class="apply-btn" onclick="saveLineData()">APPLY CHANGES</button>
+      </div>
+
+      <div id="results-modal" class="property-group" style="display: none; border-top: 2px solid #ccc;">
+        <div class="section-title" style="background: #444; color: white;">Y-BUS MATRIX RESULT</div>
+        <div id="matrix-output" style="padding: 10px; overflow-x: auto;">
+          </div>
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
+</body>
 </html>

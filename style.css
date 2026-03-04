@@ -1,30 +1,216 @@
+:root {
+    --matlab-bg: #f0f0f0;
+    --matlab-border: #dcdde1;
+    --matlab-blue: #0078d4;
+    --matlab-header: #34495e;
+    --matlab-text: #2f3640;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Ribbon Area */
+.ribbon {
+    background-color: var(--matlab-bg);
+    border-bottom: 1px solid var(--matlab-border);
+    height: 120px;
+    width: 100%;
 }
 
 .main {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-.bucket {
-  flex: 0.8;
-  border-right: 2px solid #dbdbdb;
-}
-.tools {
-  background-color: #f0f0f0;
-  flex: 0.2;
-}
-.cmpsec {
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
-  grid-template-rows: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
-.cmpbtn {
-  height: 5rem;
-  margin: 0.5rem;
+/* Workspace Canvas */
+#bucket {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: 
+        linear-gradient(to right, #f1f1f1 1px, transparent 1px),
+        linear-gradient(to bottom, #f1f1f1 1px, transparent 1px);
+    background-size: 20px 20px;
+    cursor: crosshair;
+}
+
+/* Professional Sidebar */
+.tools {
+    width: 300px; /* Use a fixed width so it doesn't squish */
+    min-width: 300px;
+    background-color: var(--matlab-bg);
+    border-left: 1px solid var(--matlab-border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    background-color: var(--matlab-header);
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.property-group {
+    background: white;
+    margin: 10px;
+    border: 1px solid var(--matlab-border);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    background-color: #f8f9fa;
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #7f8c8d;
+    border-bottom: 1px solid var(--matlab-border);
+}
+
+/* Property Grid Rows */
+.prop-row {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+}
+
+.prop-label {
+    flex: 1.2;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: #555;
+    background: #fafafa;
+    border-right: 1px solid #f0f0f0;
+}
+
+.prop-input {
+    flex: 1;
+    border: none;
+    padding: 8px;
+    font-size: 11px;
+    text-align: right;
+    outline: none;
+}
+
+.prop-input:focus {
+    background-color: #fffde7;
+}
+
+/* Buttons */
+.apply-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--matlab-blue);
+    color: white;
+    border: none;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.apply-btn:hover {
+    background-color: #005a9e;
+}
+
+/* Results Formatting */
+#matrix-output table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+#matrix-output td {
+    border: 1px solid #eee;
+    padding: 4px;
+    text-align: right;
+}
+/* Ribbon Container */
+.ribbon {
+    background-color: #f0f0f0; /* MATLAB light gray */
+    border-bottom: 1px solid #ccc;
+    height: 120px; /* Fixed height for the toolbar */
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+/* Tab Header (SIMULATION / DESIGN) */
+.ribbon-tabs {
+    display: flex;
+    background-color: #e2e2e2;
+    padding-left: 10px;
+}
+
+.tab {
+    padding: 8px 20px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #444;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.tab.active {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-bottom: none;
+}
+
+/* The actual tool buttons area */
+.toolstrip {
+    display: flex;
+    padding: 10px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.tool-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #ddd;
+    padding-right: 15px;
+}
+
+.section-label {
+    font-size: 10px;
+    color: #888;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+/* Individual Ribbon Buttons */
+.ribbon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    min-width: 70px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.ribbon-btn:hover {
+    background-color: #e5effa;
+    border-color: #a3bde3;
 }
